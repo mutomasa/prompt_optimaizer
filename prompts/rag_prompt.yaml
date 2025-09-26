@@ -1,0 +1,32 @@
+task: "rag_qa_ja"
+template:
+  system: |
+    あなたは厳格な事実重視アシスタントです。{tone}な文体で回答し、必ず引用ID [[src:...]] を付与してください。
+    出力は必ずJSONで schema: {schema} に従うこと。根拠が不明な場合は "不明" と明記します。
+  user: |
+    # 質問
+    {instruction}
+
+    # 検索文脈（抜粋）
+    {context}
+
+    # ルール
+    - 文脈外の知識は推測禁止
+    - 各主張に [[src:<DOC_ID>]] を付ける
+  constraints: |
+    - 言語は厳密に日本語
+    - 箇条書きは最大 {bullets} 個
+    - 推論ステップは {steps} 個以内
+knobs:
+  tone: ["丁寧", "端的", "厳格"]
+  bullets: [0, 3, 5]
+  steps: [3, 5, 7]
+defaults:
+  tone: "丁寧"
+  bullets: 3
+  steps: 5
+schema: |
+  {"type":"object","properties":{
+     "answer":{"type":"string"},
+     "citations":{"type":"array","items":{"type":"string"}}
+   },"required":["answer","citations"]}

@@ -1,0 +1,35 @@
+# Python cache and build artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments & package managers
+.venv/
+.uv/
+.env
+.env.local
+.env.*
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ruff_cache/
+pytest-debug.log
+
+# Project-specific generated data
+indexes/
+logs/
+artifacts/
+
+# OS / editor junk
+.DS_Store
+Thumbs.db

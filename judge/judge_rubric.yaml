@@ -1,0 +1,25 @@
+rubric:
+  accuracy:
+    max: 5
+    anchor:
+      "5": "事実誤りなし、要点網羅"
+      "3": "主要点は正しいが、欠落/曖昧あり"
+      "1": "重大誤り/無関係"
+  evidence:
+    max: 3
+    anchor:
+      "3": "主張に検証可能な根拠（引用/文脈一致）"
+      "1": "根拠が弱い/不明確"
+      "0": "根拠なし/不整合"
+  follow:
+    max: 2
+    anchor:
+      "2": "形式・制約・語調の完全遵守"
+      "0": "重要指示違反"
+  style:
+    max: 1
+    anchor:
+      "1": "日本語表記・JSON整形OK"
+      "0": "逸脱"
+weights: {accuracy: 5, evidence: 3, follow: 2, style: 1}
+tie_threshold: 0.05
